@@ -3,14 +3,14 @@
 
 <head>
       <?php
-      include "../config/head_element/cdn.php";
-      include "../config/head_element/meta.php";
-      include "../config/head_element/preset_style.php";
+      include "../config/head_element/cdn.config.php";
+      include "../config/head_element/meta.config.php";
       ?>
       <meta name="author" content="Nghia Duong">
       <meta name="description" content="Resource forbidden!">
       <title>Error 403</title>
-      <link rel="stylesheet" href="../css/error_page.css">
+      <link rel="stylesheet" href="/css/error_page.css">
+      <link rel="stylesheet" href="/css/preset_style.css">
 </head>
 
 <body>

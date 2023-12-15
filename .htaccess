@@ -1,12 +1,14 @@
 RewriteEngine On
 
-# Make page directory as root
-RewriteRule ^$ /page/ [L]
+# Make `page`` directory as root directory and redirect any requested page to the `page` directory
+RewriteRule ^([^/]*)$ /page/$1 [L]
+RewriteRule ^([^/]+)/([^/]*)$ /page/$1/$2 [L]
+#RewriteRule ^([^/]+)/([^/]+)/([^/]*)$ /page/$1/$2/$3 [L]
 
 # Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
+RewriteRule ^([^\.]+)$ $1.html [NC,L]     
 
 # Remove .php extension
 RewriteCond %{REQUEST_FILENAME} !-d
@@ -14,5 +16,6 @@ RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
 # Error pages
-ErrorDocument 403 /error/403.php
-ErrorDocument 404 /error/404.php
+ErrorDocument 403 /error/403
+ErrorDocument 404 /error/404
+ErrorDocument 500 /error/500
