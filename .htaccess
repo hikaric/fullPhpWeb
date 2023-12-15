@@ -1,9 +1,9 @@
 RewriteEngine On
 
-# Make `page`` directory as root directory and redirect any requested page to the `page` directory
+# Make `page` directory as root directory and redirect any requested page to the `page` directory
 RewriteRule ^([^/]*)$ /page/$1 [L]
-RewriteRule ^([^/]+)/([^/]*)$ /page/$1/$2 [L]
-#RewriteRule ^([^/]+)/([^/]+)/([^/]*)$ /page/$1/$2/$3 [L]
+RewriteRule ^admin/([^/]*)$ /page/admin/$1 [L]
+RewriteRule ^user/([^/]*)$ /page/user/$1 [L]
 
 # Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d

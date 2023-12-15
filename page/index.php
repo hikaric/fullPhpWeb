@@ -18,7 +18,6 @@ session_start();
 </head>
 
 <body>
-      <a href='./test1/test1'>Click</a>
 </body>
 
 </html>
