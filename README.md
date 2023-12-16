@@ -4,7 +4,12 @@
 
 ### PHP version: 8.2.0
 
-### Steps to config apache server before running LOCALLY ONLY (apply for windows OS, other OSes can be achieved with the same procedure):
+### Install mkcert (for Windows OS):
+**Step 1:** Open window powershell as administrator
+**Step 2:** Type `choco install mkcert`
+**Step 3:** Type `mkcert -install`
+
+### Steps to config apache server before running LOCALLY ONLY (apply for Windows OS, other OSes can be achieved with the same procedure):
 
 **Step 1:** Fetch the source code of this repository to your local machine (example path will be `C:\example_path` for better demonstation).
 **Step 2:** Create a self-signed SSL certificate, go to `cert` directory by typing `cd cert` in the terminal and then type in this line `mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1 www.demo.bookstore.com www.test.bookstore.com` (only use for development, production must not use this step)
