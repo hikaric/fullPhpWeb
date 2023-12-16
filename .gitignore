@@ -1,4 +1,11 @@
 .vscode
-log
-cert
-session
+
+# Do not change the order of these groups
+log/*
+!log/.htaccess
+
+cert/*
+!cert/.htaccess
+
+session/*
+!session/.htaccess

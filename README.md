@@ -2,33 +2,37 @@
 
 ### MySQL version: 8.0.31
 
-### Steps to config apache server before running (apply for windows OS, other OSes can be achieved with the same procedure):
+### Steps to config apache server before running LOCALLY ONLY (apply for windows OS, other OSes can be achieved with the same procedure):
 
-**Step 1:** Fetch the source code of this repository to your local machine (example path will be C:\\example_path for better demonstation).
-**Step 2:** Create `cert`, `log` and `session` directories in the project (C:\\example_path\\cert, C:\\example_path\\log and C:\\example_path\\session)
-**Step 3:** Create a self-signed SSL certificate, go to `cert` directory by typing `cd cert` in the terminal and then type in this line `mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1 www.demo.bookstore.com` (only use for development, production must not use this step)
-**Step 4:** Create three log files named `error.log`, `access.log` and `ssl_request.log` in C:\\example_path\\log
-**Step 5:** Locate the apache server installation directory (for example C:\\xampp\\apache)
-**Step 6:** Check for modules and includes, open `httpd.conf` file from the `conf` directory of your apache installation directory, and uncomment these lines if they are commented
+**Step 1:** Fetch the source code of this repository to your local machine (example path will be `C:\example_path` for better demonstation).
+**Step 2:** Create a self-signed SSL certificate, go to `cert` directory by typing `cd cert` in the terminal and then type in this line `mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1 www.demo.bookstore.com www.test.bookstore.com` (only use for development, production must not use this step)
+**Step 3:** Create three log files named `error.log`, `access.log` and `ssl_request.log` in `C:\example_path\log`
+**Step 4:** Locate the apache server installation directory (for example `C:\xampp\apache`)
+**Step 5:** Check for modules and includes, open `httpd.conf` file from the `conf` directory of your apache installation directory, and uncomment these groups if they are commented
 
 ```
+LoadModule log_config_module modules/mod_log_config.so
+
 LoadModule ssl_module modules/mod_ssl.so
+
 Include conf/extra/httpd-vhosts.conf
+
 Include conf/extra/httpd-ssl.conf
+
 <IfModule ssl_module>
 SSLRandomSeed startup builtin
 SSLRandomSeed connect builtin
 </IfModule>
 ```
 
-**Step 7:** Add virtual host, open `httpd-vhosts.conf` file from the `conf\extra` directory of your apache installation directory, add the following lines
+**Step 6:** Add virtual host, open `httpd-vhosts.conf` file from the `conf\extra` directory of your apache installation directory, add the following lines
 
 ```
 <VirtualHost *:443>
 ServerAdmin <your email address>
 DocumentRoot "C:\example_path"
-ServerName www.demo.bookstore.com
-#ServerAlias www.test.bookstore.com
+ServerName https://www.demo.bookstore.com
+ServerAlias https://www.test.bookstore.com
 
     SSLEngine on
     SSLCertificateFile "C:\example_path\cert\cert.pem"
@@ -112,15 +116,18 @@ ServerName www.demo.bookstore.com
 </VirtualHost>
 ```
 
-**Step 8:** Update Hosts File, go to this file `C:\Windows\System32\drivers\etc\hosts` (usually the case) and add these lines at the near bottom
+**Step 7:** Update Hosts File, go to this file `C:\Windows\System32\drivers\etc\hosts` (usually the case) and add these lines at the near bottom
 
 ```
 # Map www.demo.bookstore.com to localhost
 127.0.0.1 www.demo.bookstore.com
 ::1 www.demo.bookstore.com
+# Map www.test.bookstore.com to localhost
+127.0.0.1 www.test.bookstore.com
+::1 www.test.bookstore.com
 ```
 
 You will need to be an administrator to apply these changes
 This only apply for development stage, production stage should skip this
-**Step 9:** Start apache server (by using XAMPP for example)
-**Step 10:** Go to https://www.demo.bookstore.com
+**Step 8:** Start apache server (by using XAMPP for example)
+**Step 9:** Go to https://www.demo.bookstore.com, https://www.test.bookstore.com, https://localhost, https://127.0.0.1 or https://[::1]
