@@ -2,6 +2,8 @@
 
 ### MySQL version: 8.0.31
 
+### PHP version: 8.2.0
+
 ### Steps to config apache server before running LOCALLY ONLY (apply for windows OS, other OSes can be achieved with the same procedure):
 
 **Step 1:** Fetch the source code of this repository to your local machine (example path will be `C:\example_path` for better demonstation).
