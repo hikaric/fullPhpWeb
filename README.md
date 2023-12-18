@@ -12,7 +12,7 @@
 ### Steps to config apache server before running LOCALLY ONLY (apply for Windows OS, other OSes can be achieved with the same procedure):
 
 **Step 1:** Fetch the source code of this repository to your local machine (example path will be `C:\example_path` for better demonstation).
-**Step 2:** Create a self-signed SSL certificate, go to `cert` directory by typing `cd cert` in the terminal and then type in this line `mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1 www.demo.bookstore.com www.test.bookstore.com` (only use for development, production must not use this step)
+**Step 2:** Create a self-signed SSL certificate, go to `cert` directory by typing `cd cert` in the terminal and then type in this line `mkcert -key-file key.pem -cert-file cert.pem localhost 127.0.0.1 ::1 www.demo.bookstore.com www.test.bookstore.com [<your ip address>]?` (only use for development, production must not use this step)
 **Step 3:** Create three log files named `error.log`, `access.log` and `ssl_request.log` in `C:\example_path\log`
 **Step 4:** Locate the apache server installation directory (for example `C:\xampp\apache`)
 **Step 5:** Check for modules and includes, open `httpd.conf` file from the `conf` directory of your apache installation directory, and uncomment these groups if they are commented
