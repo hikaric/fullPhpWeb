@@ -2,10 +2,10 @@
 
 # Do not change the order of these groups
 log/*
-!log/.htaccess
+!log/.gitkeep
 
 cert/*
-!cert/.htaccess
+!cert/.gitkeep
 
 session/*
-!session/.htaccess
+!session/.gitkeep

@@ -5,6 +5,7 @@
 ### PHP version: 8.2.0
 
 ### Install mkcert (for Windows OS):
+
 **Step 1:** Open window powershell as administrator
 **Step 2:** Type `choco install mkcert`
 **Step 3:** Type `mkcert -install`
@@ -48,6 +49,11 @@ ServerAlias https://www.test.bookstore.com
     CustomLog "C:\example_path\log\ssl_request.log" \
           "%t %h %{SSL_PROTOCOL}x %{SSL_CIPHER}x \"%r\" %b"
 
+    <Directory />
+        AllowOverride none
+        Require all denied
+    </Directory>
+
     <Directory "C:\example_path">
         #
         # Possible values for the Options directive are "None", "All",
@@ -78,6 +84,48 @@ ServerAlias https://www.test.bookstore.com
         # Set the session save path
         php_value session.save_path "C:\example_path\session"
     </Directory>
+
+    <Directory "C:\example_path\session">
+        AllowOverride none
+        Require all denied
+    </Directory>
+
+    <Directory "C:\example_path\log">
+        AllowOverride none
+        Require all denied
+    </Directory>
+
+    <Directory "C:\example_path\cert">
+        AllowOverride none
+        Require all denied
+    </Directory>
+
+    <Directory "C:\example_path\config">
+        AllowOverride none
+        Require all denied
+    </Directory>
+
+    <Directory "C:\example_path\javascript">
+        AllowOverride none
+        Require all denied
+    </Directory>
+
+    <Directory "C:\example_path\ajax_service">
+        AllowOverride none
+        Require all denied
+    </Directory>
+
+    <Files ".[hH][Tt]*">
+        Require all denied
+    </Files>
+
+    <Files ".[gG][iI][tT]*">
+        Require all denied
+    </Files>
+
+    <Files "*.[mM][dD]">
+        Require all denied
+    </Files>
 
     <IfModule dir_module>
         DirectoryIndex index.php index.pl index.cgi index.asp index.shtml index.html index.htm \
@@ -116,12 +164,10 @@ ServerAlias https://www.test.bookstore.com
         CustomLog "C:\example_path\log\access.log" combined
     </IfModule>
 
-    <Files ".ht*">
-        Require all denied
-    </Files>
-
 </VirtualHost>
 ```
+
+Replace `C:\example_path` with the directory of this project in your machine to finish setting up.
 
 **Step 7:** Update Hosts File, go to this file `C:\Windows\System32\drivers\etc\hosts` (usually the case) and add these lines at the near bottom
 

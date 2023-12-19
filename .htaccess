@@ -1,26 +1,20 @@
 RewriteEngine On
 
-# Make `page` directory as root directory and redirect any requested page to the `page` directory
-RewriteCond %{REQUEST_URI} !^/page/ [NC]
-RewriteCond %{REQUEST_URI} !^/config/ [NC]
-RewriteCond %{REQUEST_URI} !^/ajax_service/ [NC]
-RewriteCond %{REQUEST_URI} !^/css/ [NC]
-RewriteCond %{REQUEST_URI} !^/error/ [NC]
-RewriteCond %{REQUEST_URI} !^/javascript/ [NC]
-RewriteRule ^(.*)$ /page/$1 [L]
-
-# Old - same as above but not very efficient
-#RewriteRule ^([^/]*)$ /page/$1 [L]
-#RewriteRule ^admin/([^/]*)$ /page/admin/$1 [L]
-#RewriteRule ^user/([^/]*)$ /page/user/$1 [L]
-
-<Files "*.md">
-    Require all denied
-</Files>
+## Routing URLs
+# Base URLs (for authentication related features) for both admin and normal user
+RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript)/ [NC]
+RewriteRule ^(/?|recovery|sign_up)$ /page/$1 [NC,L]   
+# URLs for admin
+RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript)/ [NC]
+RewriteRule ^admin(/.*)*$ /page/admin/$1 [NC,L]   
+# URLs for normal user
+RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript)/ [NC]
+RewriteCond %{REQUEST_URI} !^/page/(recovery|sign_up|admin|/|) [NC]
+RewriteRule ^(.*)$ /page/user/$1 [NC,L]   
 
 # Remove .html extension
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteCond %{REQUEST_FILENAME}.html -f   
 RewriteRule ^([^\.]+)$ $1.html [NC,L]     
 
 # Remove .php extension
