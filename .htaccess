@@ -2,13 +2,13 @@ RewriteEngine On
 
 ## Routing URLs
 # Base URLs (for authentication related features) for both admin and normal user
-RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript)/ [NC]
+RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript|layout|cert|head_element|log|database|session)/ [NC]
 RewriteRule ^(/?|recovery|sign_up)$ /page/$1 [NC,L]   
 # URLs for admin
-RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript)/ [NC]
+RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript|layout|cert|head_element|log|database|session)/ [NC]
 RewriteRule ^admin(/.*)*$ /page/admin/$1 [NC,L]   
 # URLs for normal user
-RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript)/ [NC]
+RewriteCond %{REQUEST_URI} !^/(page|config|ajax_service|css|error|javascript|layout|cert|head_element|log|database|session)/ [NC]
 RewriteCond %{REQUEST_URI} !^/page/(recovery|sign_up|admin|/|) [NC]
 RewriteRule ^(.*)$ /page/user/$1 [NC,L]   
 

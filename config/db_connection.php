@@ -1,7 +1,7 @@
 <?php 
       $host="localhost";
       $database="bookstore";
-      $user= "bookstore123";
+      $user= "bookstore";
       $password= "bookstore123";
       $port="3306";
 ?>

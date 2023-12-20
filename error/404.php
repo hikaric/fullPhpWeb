@@ -3,8 +3,8 @@
 
 <head>
       <?php
-      include "../config/head_element/cdn.config.php";
-      include "../config/head_element/meta.config.php";
+      include "../head_element/cdn.php";
+      include "../head_element/meta.php";
       ?>
       <meta name="author" content="Nghia Duong">
       <meta name="description" content="Page not found!">

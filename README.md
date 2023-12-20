@@ -105,12 +105,12 @@ ServerAlias https://www.test.bookstore.com
         Require all denied
     </Directory>
 
-    <Directory "C:\example_path\javascript">
+    <Directory "C:\example_path\ajax_service">
         AllowOverride none
         Require all denied
     </Directory>
 
-    <Directory "C:\example_path\ajax_service">
+    <Directory "C:\example_path\database">
         AllowOverride none
         Require all denied
     </Directory>
@@ -167,7 +167,7 @@ ServerAlias https://www.test.bookstore.com
 </VirtualHost>
 ```
 
-Replace `C:\example_path` with the directory of this project in your machine to finish setting up.
+Replace `C:\example_path` with the directory of this project in your machine to finish setting up this step.
 
 **Step 7:** Update Hosts File, go to this file `C:\Windows\System32\drivers\etc\hosts` (usually the case) and add these lines at the near bottom
 
@@ -182,5 +182,5 @@ Replace `C:\example_path` with the directory of this project in your machine to 
 
 You will need to be an administrator to apply these changes
 This only apply for development stage, production stage should skip this
-**Step 8:** Start apache server (by using XAMPP for example)
+**Step 8:** Restart apache server (by using XAMPP for example)
 **Step 9:** Go to https://www.demo.bookstore.com, https://www.test.bookstore.com, https://localhost, https://127.0.0.1 or https://[::1]

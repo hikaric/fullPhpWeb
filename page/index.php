@@ -11,8 +11,8 @@ session_start();
 
 <head>
       <?php
-      include "../config/head_element/cdn.config.php";
-      include "../config/head_element/meta.config.php";
+      include "../head_element/cdn.php";
+      include "../head_element/meta.php";
       ?>
       <link rel="stylesheet" href="/css/preset_style.css">
 </head>
