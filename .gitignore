@@ -9,3 +9,6 @@ cert/*
 
 session/*
 !session/.gitkeep
+
+# Ignore packages
+/vendor/

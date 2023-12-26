@@ -1,14 +1,18 @@
-### Apache version: 2.4.54
+### Apache version: 2.4.54 (PHP: 8.2.0)
 
 ### MySQL version: 8.0.31
 
-### PHP version: 8.2.0
+### PHP version (for Composer package manager installation): 8.3.0
+
+### Composer version: 2.6.6
 
 ### Install mkcert (for Windows OS):
 
 **Step 1:** Open window powershell as administrator
 **Step 2:** Type `choco install mkcert`
 **Step 3:** Type `mkcert -install`
+
+### Install all required packages using Composer: `composer install`
 
 ### Steps to config apache server before running LOCALLY ONLY (apply for Windows OS, other OSes can be achieved with the same procedure):
 
